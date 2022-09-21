@@ -13,6 +13,6 @@ public interface CurrencyRepository extends JpaRepository<Currency, String> {
 
   Optional<Currency> findByCode(String code);
 	
-	void deleteByCode(String code);
+  void deleteByCode(String code);
 
 }
