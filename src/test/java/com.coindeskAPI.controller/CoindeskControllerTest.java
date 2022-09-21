@@ -31,25 +31,25 @@ import com.tpisoftware.cfh.apistore.service.impl.CurrencyServiceImpl;
 @AutoConfigureMockMvc
 public class CoindeskControllerTest { 
 
-    @Autowired
+    	  @Autowired
 	  private WebApplicationContext webApplicationContext;
-    @Autowired
-    private CurrencyRepository currencyRepository;
-    @MockBean
-    private CurrencyServiceImpl currencyServiceImpl;
+    	  @Autowired
+    	  private CurrencyRepository currencyRepository;
+    	  @MockBean
+    	  private CurrencyServiceImpl currencyServiceImpl;
 
-    private MockMvc mvc;
+    	  private MockMvc mvc;
 
 	  public static final String coinDeskUrl = "https://api.coindesk.com/v1/bpi/currentprice.json";
 	
 	  private static final Logger logger = LoggerFactory.getLogger(CoinDeskControllerTest.class);
 
 
-    /**
-     * 測試呼叫coindesk API，並顯示其內容。
+   	  /**
+    	   * 測試呼叫coindesk API，並顯示其內容。
  	   * 
  	   */
-    @Test
+          @Test
 	  public void contextLoads() throws Exception {
 		String uri = "/coindesk/getCoindeskApi";
 		MvcResult result = mvc.perform(MockMvcRequestBuilders.get(uri).accept(MediaType.APPLICATION_JSON)).andReturn();
@@ -59,11 +59,11 @@ public class CoindeskControllerTest {
 		Assert.assertEquals("錯誤",200,status);
 	  }
 
-   /**
-    * 測試呼叫資料轉換的API，並顯示其內容。
-    * 
-    */
- //	@Test
+   	 /**
+    	  * 測試呼叫資料轉換的API，並顯示其內容。
+    	  * 
+    	  */
+//	  @Test
 	  public void newCoinDeskAPILoads() throws Exception {
 		String uri = "/coindesk/getNewCoinDeskAPI";
 		MvcResult result = mvc.perform(MockMvcRequestBuilders.get(uri).accept(MediaType.APPLICATION_JSON)).andReturn();
