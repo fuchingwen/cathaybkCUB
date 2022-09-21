@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <!-- 基於Spring Boot 2.3.3建置，繼承此POM，方便整合其他依賴 -->  
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -9,18 +10,16 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.cathaybkCUB</groupId>
-    <artifactId>coindeskAPI</artifactId>
+    <groupId>com.coindeskAPI</groupId>
+    <artifactId>cathaybkCUB</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>COINDESK_API</name>
     <description>COINDESK API</description>
     <packaging>jar</packaging>
 
     <properties>
-        <java.version>8</java.version>
-        
+        <java.version>1.8</java.version>
     </properties>
-
  
     <dependencies>
 
@@ -29,13 +28,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-        
+         <!-- Spring Boot Web應用開發相關依賴 -->  
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        
+	    
         <!--Logger-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -51,22 +49,10 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-
-        <!--jackson-->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.10.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.10.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.11.2</version>
+	<dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <!--commons-lang3-->
@@ -109,7 +95,7 @@
             <scope>compile</scope>
         </dependency>
 
-        <!--Testing-->
+        <!--Testing--><!-- Spring Boot應用測試相關依賴 --> 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -159,12 +145,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>test</scope>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -203,7 +183,7 @@
                             <Class-Path>resources/</Class-Path>
                         </manifestEntries>
                         <manifest>
-                            <mainClass>com.cathaybkCUB.coindeskAPI.Application</mainClass>
+                            <mainClass>com.coindeskAPI.coindeskAPIApplication</mainClass>
                         </manifest>
                     </archive>
                     <excludes>
@@ -224,7 +204,7 @@
                         <configuration>
                             <classifier></classifier>
                             <mainClass>
-                                com.cathaybkCUB.coindeskAPI.Application
+                                com.coindeskAPI.coindeskAPIApplication
                             </mainClass>
                         </configuration>
                     </execution>
