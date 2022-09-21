@@ -1,4 +1,4 @@
-package me.cathaybk.coindesk.config;
+package com.coindeskAPI.config;
 
 import java.util.Properties;
 
@@ -15,6 +15,7 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.OpenJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 
 @Configuration
 @EnableTransactionManagement
@@ -48,12 +49,12 @@ public class JpaConfig {
 	public EntityManagerFactory entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean factoryBean =
 		new LocalContainerEntityManagerFactoryBean();
-		factoryBean.setPackagesToScan("me.cathaybk.coindesk.entity");
+		factoryBean.setPackagesToScan("com.coindeskAPI.model");
 		factoryBean.setDataSource(dataSource);		
 		factoryBean.setJpaProperties(openJpaProperties());
-		//factoryBean.setPersistenceUnitName("CurrencySystem");
 		factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
 		factoryBean.afterPropertiesSet();
 		return factoryBean.getNativeEntityManagerFactory();
 	}
+	
 }
