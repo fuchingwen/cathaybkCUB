@@ -66,7 +66,7 @@ public class CurrencyControllerTest {
 
 	public static final String JSON_UTF8 = "application/json;charset=UTF-8";
   
-  private Map<String, Currency> currencies;
+        private Map<String, Currency> currencies;
 	
 	private MockMvc mockMvc;
 		
@@ -80,16 +80,16 @@ public class CurrencyControllerTest {
 		ntd.setChineseName("新台幣");
 		
 		Currency usd = new Currency();
-    usd.setCode("USD");		
-    usd.setChineseName("美金");
+                usd.setCode("USD");		
+                usd.setChineseName("美金");
 		
 		Currency gbp = new Currency();
 		gbp.setCode("GBP");
-    gbp.setChineseName("英鎊");
+                gbp.setChineseName("英鎊");
 		
 		Currency eur = new Currency();
 		eur.setCode("EUR");
-    eur.setChineseName("歐元");
+                eur.setChineseName("歐元");
 		
 		List<Currency> currencyList = new ArrayList<>();
 		currencyList.add(ntd);
@@ -107,12 +107,12 @@ public class CurrencyControllerTest {
 		mockMvc = MockMvcBuilders.standaloneSetup(new CurrencyController(currencyServiceImpl)).build();
 	}
    
-  /**
+        /**
 	 * 測試呼叫查詢所有幣別對應表資料API，並顯示其內容
 	 * 
 	 * @throws Exception
 	 */
-//@Test
+      //@Test
 	public void testFindAll() throws Exception {
 		when(currencyServiceImpl.findAll()).thenReturn(new ArrayList<>(currencies.values()));
 		mockMvc.perform(get("/currencies")).andDo(print())
@@ -126,7 +126,7 @@ public class CurrencyControllerTest {
 	 * 
 	 * @throws Exception
 	 */
-//@Test
+      //@Test
 	public void testFindByCode() throws Exception {
 
 		when(currencyServiceImpl.findAll()).thenReturn(new ArrayList<>(currencies.values()));
@@ -148,7 +148,7 @@ public class CurrencyControllerTest {
 	 * 
 	 * @throws Exception
 	 */
-//@Test
+      //@Test
 	public void testAdd() throws Exception {
 		when(currencyServiceImpl.add(Mockito.any(Currency.class))).thenReturn(new Currency("CNY", "人民幣"));
 		
@@ -189,7 +189,7 @@ public class CurrencyControllerTest {
 	 * 
 	 * @throws Exception
 	 */
-//@Test
+      //@Test
 	public void testDelete() throws Exception {
 
 		mockMvc.perform(
