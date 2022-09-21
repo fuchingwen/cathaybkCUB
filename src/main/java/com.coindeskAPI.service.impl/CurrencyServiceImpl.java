@@ -16,12 +16,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
 
-import com.tpisoftware.cfh.apistore.model.Currency;
-import com.tpisoftware.cfh.apistore.repository.CurrencyRepository;
-import com.tpisoftware.cfh.apistore.vo.CoinDeskNewVo;
-import com.tpisoftware.cfh.apistore.dto.CoindeskApiResponseDto;
-import com.tpisoftware.cfh.apistore.dto.CoindeskApiRequestDto;
-import com.tpisoftware.cfh.apistore.dto.CurrencyRequestDto;
+import com.coindeskAPI.model.Currency;
+import com.coindeskAPI.repository.CurrencyRepository;
+import com.coindeskAPI.vo.CoinDeskNewVo;
+import com.coindeskAPI.dto.CoindeskApiResponseDto;
+import com.coindeskAPI.dto.CoindeskApiRequestDto;
+import com.coindeskAPI.dto.CurrencyRequestDto;
 
 import com.google.gson.Gson;
 
@@ -39,16 +39,16 @@ public class CurrencyServiceImpl {
 	private static final Logger logger = LoggerFactory.getLogger(RemindBindingServiceImpl.class);
 
 	@Autowired
-	CurrencyRepository currencyRepository;
+	private CurrencyRepository currencyRepository;
 
-    @Value("${coindesk_url:https://api.coindesk.com/v1/bpi/currentprice.json}")
+   	@Value("${coindesk_url:https://api.coindesk.com/v1/bpi/currentprice.json}")
 	private String coinDeskUrl;
 
-    @Autowired
-    RestTemplate restTemplate;
+    	@Autowired
+    	private RestTemplate restTemplate;
 
 
-    public CoindeskApiResponseDto getCoindeskApi() throws Exception {
+    	public CoindeskApiResponseDto getCoindeskApi() throws Exception {
 		String jsonString = this.getUrlData(coinDeskUrl, "UTF8");
 
 		CoindeskApiResponseDto coindeskApiResponseDto = new CoindeskApiResponseDto();
@@ -119,7 +119,7 @@ public class CurrencyServiceImpl {
 		}
 	}
 
-    public List<Currency> findAll() {
+    	public List<Currency> findAll() {
 		return currencyRepository.findAll();
 	}   
      
