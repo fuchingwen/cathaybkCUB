@@ -13,5 +13,4 @@ public class CoindeskAPIApplication {
 		SpringApplication.run(CoindeskAPIApplication.class, args);
 	}
 
-
 }
