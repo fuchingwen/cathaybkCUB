@@ -183,7 +183,7 @@
                             <Class-Path>resources/</Class-Path>
                         </manifestEntries>
                         <manifest>
-                            <mainClass>com.coindeskAPI.coindeskAPIApplication</mainClass>
+                            <mainClass>com.coindeskAPI.CoindeskAPIApplication</mainClass>
                         </manifest>
                     </archive>
                     <excludes>
@@ -204,7 +204,7 @@
                         <configuration>
                             <classifier></classifier>
                             <mainClass>
-                                com.coindeskAPI.coindeskAPIApplication
+                                com.coindeskAPI.CoindeskAPIApplication
                             </mainClass>
                         </configuration>
                     </execution>
