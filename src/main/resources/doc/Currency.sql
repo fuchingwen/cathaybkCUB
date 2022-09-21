@@ -1,10 +1,10 @@
 CREATE TABLE Currency (
 
-id int NOT NULL AUTO_INCREMENT, 
+id INT NOT NULL AUTO_INCREMENT, 
 code VARCHAR(20) NOT NULL, 
 chinese_name VARCHAR(80) NOT NULL, 
 creator VARCHAR(50), 
-create_time DATETIME,
+create_time TIMESTAMP,
 update_time DATETIME,
 is_suspend CHAR(1),
 PRIMARY KEY (id),
