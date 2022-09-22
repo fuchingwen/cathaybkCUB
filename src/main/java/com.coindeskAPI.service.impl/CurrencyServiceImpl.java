@@ -16,10 +16,12 @@ import org.springframework.web.client.RestTemplate;
 
 import com.coindeskAPI.model.Currency;
 import com.coindeskAPI.repository.CurrencyRepository;
+import com.coindeskAPI.utils.DateUtil;
 import com.coindeskAPI.dto.CoindeskApiResponseDto;
 import com.coindeskAPI.dto.CoindeskApiRequestDto;
 import com.coindeskAPI.dto.CurrencyRequestDto;
 import com.coindeskAPI.dto.CoindeskApiNewDto;
+import com.coindeskAPI.enums.DatePatterns;
 
 import com.google.gson.Gson;
 
