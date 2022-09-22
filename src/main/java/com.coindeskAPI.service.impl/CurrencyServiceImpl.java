@@ -60,8 +60,8 @@ public class CurrencyServiceImpl {
                 CoindeskApiRequestDto data = restTemplate.getForObject(coinDeskUrl, CoindeskApiRequestDto.class);
 
                 CoindeskApiNewDto coindeskApiNewDto = new CoindeskApiNewDto();
-                Date now = new Date();
-                coindeskApiNewDto.setUpdateTime(now);
+                coindeskApiNewDto.setUpdateTime(DateUtil.getCurrentLocalDateTimeStr(DatePatterns.DATE_TIME_SLASH));
+		
                 Map<String, CoindeskApiRequestDto.Bpi> bpis = data.getBpi();
                 for (String key : bpis.keySet()) {
                 	CoindeskApiRequestDto.Bpi coinDeskBpi = bpis.get(key);
