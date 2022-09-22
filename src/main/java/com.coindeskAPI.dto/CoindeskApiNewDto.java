@@ -2,7 +2,6 @@ package com.coindeskAPI.dto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -11,17 +10,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class CoindeskApiNewDto {
 	
      @JsonFormat(pattern = "yyyy/MM/dd hh:mm:ss", timezone = "GMT+8")
-     private Date updateTime;
+     private String updateTime;
 
      List<CoinDeskBpiNew> coinDeskBpiNews;
 
   
-     public void CoinDeskNew(Date updateTime, CoinDeskBpiNew... coinDeskBpiNew) {
+     public void CoinDeskNew(String updateTime, CoinDeskBpiNew... coinDeskBpiNew) {
 		this.updateTime = updateTime;		
 		this.coinDeskBpiNews = new ArrayList<>(Arrays.asList(coinDeskBpiNew));	
      }
 
-     public void CoinDeskNew(Date updateTime, List<CoinDeskBpiNew> coinDeskBpiNews) {
+     public void CoinDeskNew(String updateTime, List<CoinDeskBpiNew> coinDeskBpiNews) {
 		this.updateTime = updateTime;
 		this.coinDeskBpiNews = coinDeskBpiNews;	
      }
@@ -53,11 +52,11 @@ public class CoindeskApiNewDto {
 
       }
 
-	public Date getUpdateTime() {
+	public String getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdateTime(Date updateTime) {
+	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
 	}
 
