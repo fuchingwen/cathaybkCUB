@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -18,10 +16,10 @@ import org.springframework.web.client.RestTemplate;
 
 import com.coindeskAPI.model.Currency;
 import com.coindeskAPI.repository.CurrencyRepository;
-import com.coindeskAPI.vo.CoinDeskNewVo;
 import com.coindeskAPI.dto.CoindeskApiResponseDto;
 import com.coindeskAPI.dto.CoindeskApiRequestDto;
 import com.coindeskAPI.dto.CurrencyRequestDto;
+import com.coindeskAPI.dto.CoindeskApiNewDto;
 
 import com.google.gson.Gson;
 
@@ -57,26 +55,25 @@ public class CurrencyServiceImpl {
 		return coindeskApiResponseDto;
 	}
     
-        public CoinDeskNewVo getNewCoinDeskAPI() throws Exception {
+        public CoindeskApiNewDto getNewCoinDeskAPI() throws Exception {
 		
                 CoindeskApiRequestDto data = restTemplate.getForObject(coinDeskUrl, CoindeskApiRequestDto.class);
 
-                CoinDeskNewVo coinDeskNew = new CoinDeskNewVo();
+                CoindeskApiNewDto coindeskApiNewDto = new CoindeskApiNewDto();
                 Date now = new Date();
-                coinDeskNew.setUpdateTime(now);
+                coindeskApiNewDto.setUpdateTime(now);
                 Map<String, CoindeskApiRequestDto.Bpi> bpis = data.getBpi();
                 for (String key : bpis.keySet()) {
-                	//CoinDeskBpiVo coinDeskBpi = new CoinDeskBpiVo();
                 	CoindeskApiRequestDto.Bpi coinDeskBpi = bpis.get(key);
                 	Optional<Currency> currencyEntity = currencyRepository.findByCode(coinDeskBpi.getCode());
-                	CoinDeskNewVo.CoinDeskBpiNew coinDeskBpiNewVO = new CoinDeskNewVo.CoinDeskBpiNew();
-                	coinDeskBpiNewVO.setCode(currencyEntity.isPresent() ? currencyEntity.get().getCode() : coinDeskBpi.getCode());
-                	coinDeskBpiNewVO.setChineseName(currencyEntity.isPresent() ? currencyEntity.get().getChineseName() : coinDeskBpi.getCode());
-                	coinDeskBpiNewVO.setRate(coinDeskBpi.getRate());
+                	CoindeskApiNewDto.CoinDeskBpiNew coinDeskBpiNewVo = new CoindeskApiNewDto.CoinDeskBpiNew();
+                	coinDeskBpiNewVo.setCode(currencyEntity.isPresent() ? currencyEntity.get().getCode() : coinDeskBpi.getCode());
+                	coinDeskBpiNewVo.setChineseName(currencyEntity.isPresent() ? currencyEntity.get().getChineseName() : coinDeskBpi.getCode());
+                	coinDeskBpiNewVo.setRate(coinDeskBpi.getRate());
 
-                	coinDeskNew.getCoinDeskBpiNews().add(coinDeskBpiNewVO);
+                	coindeskApiNewDto.getCoinDeskBpiNews().add(coinDeskBpiNewVo);
                 }
-                return coinDeskNew;
+                return coindeskApiNewDto;
 	     }	
 
         public Currency addDtoToEntity(CurrencyRequestDto dto) {
@@ -145,10 +142,5 @@ public class CurrencyServiceImpl {
 		}
 		return urlString;
 	}
-	
-	//public Map<String, Currency> currencyMap() {
-		//return this.findAll().stream().collect(Collectors.toMap(x -> x.getCode(), Function.identity()));
-	//}
-	
 	
 }
